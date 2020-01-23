@@ -22,8 +22,6 @@ const store = createStore(
   reducer,
   {
     loggedIn: false,
-    username: "",
-    password: "",
     serachQuery: "",
     min: 0,
     max: 100000

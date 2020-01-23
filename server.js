@@ -9,7 +9,7 @@ let sha1 = require("sha1");
 reloadMagic(app);
 
 app.use("/", express.static("build")); // Needed for the HTML and JS files
-app.use("/", express.static("public")); // Needed for local assets
+app.use("/static", express.static("public")); // Needed for local assets
 app.use("/uploads", express.static("uploads"));
 
 let dbo = undefined;
@@ -20,6 +20,22 @@ MongoClient.connect(url, { useUnifiedTopology: true }, (err, db) => {
 });
 
 // Your endpoints go after this line
+app.get("/all-posts", (req, res) => {
+  console.log("request to /all-posts");
+  dbo
+    .collection("posts")
+    .find({})
+    .toArray((err, ps) => {
+      if (err) {
+        console.log("error", err);
+        res.send("fail");
+        return;
+      }
+      console.log("posts", ps);
+      res.send(JSON.stringify(ps));
+    });
+});
+
 app.post("/signup", upload.none(), async (req, res) => {
   console.log("signup", req.body);
   let name = req.body.username;
