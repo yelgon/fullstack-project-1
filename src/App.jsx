@@ -1,10 +1,28 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import Signup from "./Signup.jsx";
+import Login from "./Login.jsx";
+import Content from "./Content.jsx";
 
-class App extends Component {
-    render = () => {
-        return "Hello world!"
+class UnconnectedApp extends Component {
+  render = () => {
+    if (this.lgin) {
+      return (
+        <div>
+          <Content />
+        </div>
+      );
     }
+    return (
+      <div>
+        <Signup />
+        <Login />
+      </div>
+    );
+  };
 }
-
-
-export default App
+let mapStateToProps = state => {
+  return { lgin: state.loggedIn };
+};
+let App = connect(mapStateToProps)(UnconnectedApp);
+export default App;
