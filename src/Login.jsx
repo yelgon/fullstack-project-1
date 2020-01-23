@@ -27,7 +27,6 @@ class UnconnectedLogin extends Component {
     if (body.success) {
       alert("Login Success");
       this.props.dispatch({ type: "login-success" });
-      this.setState({ username: "", password: "" });
     }
   };
   render = () => {

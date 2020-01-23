@@ -6,7 +6,7 @@ import Content from "./Content.jsx";
 
 class UnconnectedApp extends Component {
   render = () => {
-    if (this.lgin) {
+    if (this.props.lgin) {
       return (
         <div>
           <Content />

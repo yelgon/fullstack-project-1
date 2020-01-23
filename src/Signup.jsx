@@ -17,6 +17,8 @@ class Signup extends Component {
     data.append("username", this.state.usernameInput);
     data.append("password", this.state.passwordInput);
     fetch("/signup", { method: "POST", body: data });
+    alert("Signup success");
+
     this.setState({ usernameInput: "", passwordInput: "" });
   };
   render = () => {
