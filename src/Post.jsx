@@ -1,27 +1,21 @@
 import React, { Component } from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 class Post extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      description: this.props.contents.description,
-      brand: this.props.contents.brand,
-      model: this.props.contents.model,
-      price: this.props.contents.price
-    };
+    this.state = {};
   }
 
   render = () => {
     return (
       <div>
-        <div>{this.state.brand}</div>
-        <img src={this.props.contents.frontendPath} />
-        {/* <Link to={"/detail/" + this.state.model}>
+        <div>{this.props.contents.brand}</div>
+        <Link to={"/detail/" + this.props.contents.model}>
           <img src={this.props.contents.frontendPath} />
-        </Link> */}
-        <div>{this.state.model}</div>
-        <div>$ {this.state.price}</div>
+        </Link>
+        <div>{this.props.contents.model}</div>
+        <div>$ {this.props.contents.price}</div>
       </div>
     );
   };

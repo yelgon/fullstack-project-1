@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
+import { Route, BrowserRouter, Link } from "react-router-dom";
+import Navbar from "./Navbar.jsx";
 import Post from "./Post.jsx";
-// import { Route, BrowserRouter, Link } from "react-router-dom";
-// import Navbar from "./Navbar.jsx";
-// import Detail from "./Detail.jsx";
+import Details from "./Details.jsx";
+
 // import Sell from "./Sell.jsx";
 
-class UnconnectedContent extends Component {
+class Content extends Component {
   constructor(props) {
     super(props);
     this.state = { cart: [], allPosts: [], posts: [] };
@@ -17,9 +17,40 @@ class UnconnectedContent extends Component {
     console.log("/all-posts response", body);
     body = JSON.parse(body);
     this.setState({ allPosts: body });
+    this.loadAll();
   };
-  logout = () => {
-    this.props.dispatch({ type: "logout" });
+  addToCart = item => {
+    this.setState({ cart: this.state.cart.concat(item) });
+  };
+  renderItemDetails = routerData => {
+    const modelName = routerData.match.params.model;
+    const model = this.state.allPosts.find(e => e.model === modelName);
+    if (model === undefined) {
+      return <div>Can not find model</div>;
+    }
+    return <Details model={model} addToCart={this.addToCart} />;
+  };
+  renderAllItems = () => {
+    return (
+      <div>
+        <div>
+          <button onClick={this.loadAll}> Show All </button>
+          <button onClick={this.loadHonda}> HONDA </button>
+          <button onClick={this.loadDucati}> DUCATI </button>
+          <button onClick={this.loadYamaha}> YAMAHA </button>
+          <button onClick={this.loadSuzuki}> SUZUKI </button>
+          <button onClick={this.loadAprilia}> APRILIA </button>
+          <button onClick={this.loadBmw}> BMW </button>
+          <button onClick={this.loadKawasaki}> KAWASAKI </button>
+          <button onClick={this.loadHarleyDavidson}>HALRLEY DAVIDSON</button>
+        </div>
+        <div>
+          {this.state.posts.map(p => (
+            <Post key={p._id} contents={p} />
+          ))}
+        </div>
+      </div>
+    );
   };
   loadAll = () => {
     this.setState({ posts: this.state.allPosts });
@@ -61,28 +92,22 @@ class UnconnectedContent extends Component {
 
   render() {
     return (
-      <div>
-        <button onClick={this.logout}> LOGOUT</button>
-
+      <BrowserRouter>
         <div>
-          <button onClick={this.loadAll}> Show All </button>
-          <button onClick={this.loadHonda}> HONDA </button>
-          <button onClick={this.loadDucati}> DUCATI </button>
-          <button onClick={this.loadYamaha}> YAMAHA </button>
-          <button onClick={this.loadSuzuki}> SUZUKI </button>
-          <button onClick={this.loadAprilia}> APRILIA </button>
-          <button onClick={this.loadBmw}> BMW </button>
-          <button onClick={this.loadKawasaki}> KAWASAKI </button>
-          <button onClick={this.loadHarleyDavidson}>HALRLEY DAVIDSON</button>
+          <Navbar cartSize={this.state.cart.length} />
+          <Route exact={true} path="/" render={this.renderAllItems} />
+          <Route exact={true} path="/cart" render={this.renderCart} />
+          <Route exact={true} path="/checkout" render={this.renderCheckout} />
+          <Route exact={true} path="/sell" render={this.renderSell} />
+          <Route
+            exact={true}
+            path="/detail/:model"
+            render={this.renderItemDetails}
+          />
         </div>
-        <div>
-          {this.state.posts.map(p => (
-            <Post key={p._id} contents={p} />
-          ))}
-        </div>
-      </div>
+      </BrowserRouter>
     );
   }
 }
-let Content = connect()(UnconnectedContent);
+
 export default Content;
