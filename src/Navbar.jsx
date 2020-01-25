@@ -24,7 +24,7 @@ class UnconnectedNavbar extends Component {
         </div>
         <div>
           <Link to="/cart">
-            <img src="/static/cart2.png" className="Navbar-img" />
+            <img height="50px" src="/static/cart2.png" />
             <span>{this.props.cartSize}</span>
           </Link>
         </div>

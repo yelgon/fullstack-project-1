@@ -24,8 +24,8 @@ body {
 .Navbar {
   display: flex;
   height: 100px;
-  background-color: aquamarine;
+  background-color: white;
 }
 .Navbar-img {
-  height: 50px;
+  height: 70px;
 }
