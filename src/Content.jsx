@@ -11,6 +11,7 @@ class Content extends Component {
     super(props);
     this.state = { cart: [], allPosts: [], posts: [] };
   }
+
   componentDidMount = async () => {
     let response = await fetch("/all-posts");
     let body = await response.text();
@@ -30,6 +31,7 @@ class Content extends Component {
     }
     return <Details model={model} addToCart={this.addToCart} />;
   };
+
   renderAllItems = () => {
     return (
       <div>

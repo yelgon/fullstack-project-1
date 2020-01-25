@@ -23,9 +23,9 @@ class Details extends Component {
     } = this.props.model;
     return (
       <div>
-        <img height="100px" src={frontendPath} />
+        <img height="300px" src={frontendPath} />
         <h1>{model}</h1>
-        <ol>
+        <ul>
           <li>BRAND: {brand}</li>
           <li>YEAR: {year}</li>
           <li>PRICE: {price}</li>
@@ -37,7 +37,7 @@ class Details extends Component {
           <li>SEAT HEIGHT: {seatHeight}</li>
           <li>WEIGHT: {weight}</li>
           <li>DESCIPTION: {description}</li>
-        </ol>
+        </ul>
         <button onClick={this.addToCart}>Add To Cart</button>
       </div>
     );
