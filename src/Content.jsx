@@ -45,6 +45,8 @@ class Content extends Component {
           <button onClick={this.loadBmw}> BMW </button>
           <button onClick={this.loadKawasaki}> KAWASAKI </button>
           <button onClick={this.loadHarleyDavidson}>HALRLEY DAVIDSON</button>
+          <input type="text" onChange={this.handleQuery}></input>
+          <span>Search</span>
         </div>
         <div>
           {this.state.posts.map(p => (
@@ -53,6 +55,14 @@ class Content extends Component {
         </div>
       </div>
     );
+  };
+  handleQuery = event => {
+    let query = event.target.value;
+    this.setState({
+      posts: this.state.allPosts.filter(item => {
+        return item.brand.includes(query) || item.model.includes(query);
+      })
+    });
   };
   loadAll = () => {
     this.setState({ posts: this.state.allPosts });
