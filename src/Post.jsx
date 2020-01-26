@@ -12,7 +12,7 @@ class Post extends Component {
       <div>
         <div>{this.props.contents.brand}</div>
         <Link to={"/detail/" + this.props.contents.model}>
-          <img height="150px" src={this.props.contents.frontendPath} />
+          <img height="200px" src={this.props.contents.frontendPath} />
         </Link>
         <div>{this.props.contents.model}</div>
         <div>$ {this.props.contents.price}</div>

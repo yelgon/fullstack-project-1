@@ -4,6 +4,7 @@ import Navbar from "./Navbar.jsx";
 import Post from "./Post.jsx";
 import Details from "./Details.jsx";
 import Sell from "./Sell.jsx";
+import Cart from "./Cart.jsx";
 
 class Content extends Component {
   constructor(props) {
@@ -22,6 +23,11 @@ class Content extends Component {
   addToCart = item => {
     this.setState({ cart: this.state.cart.concat(item) });
   };
+  removeItem = idx => {
+    const cartCopy = this.state.cart.slice();
+    cartCopy.splice(idx, 1);
+    this.setState({ cart: cartCopy });
+  };
   renderItemDetails = routerData => {
     const modelName = routerData.match.params.model;
     const model = this.state.allPosts.find(e => e.model === modelName);
@@ -32,6 +38,9 @@ class Content extends Component {
   };
   renderSell = () => {
     return <Sell />;
+  };
+  renderCart = () => {
+    return <Cart cart={this.state.cart} removeItem={this.removeItem} />;
   };
   renderAllItems = () => {
     return (
