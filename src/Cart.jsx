@@ -21,6 +21,7 @@ class Cart extends Component {
             </div>
           ))}
         </div>
+        <div>Total Cost : $ {this.props.total}</div>
         <Link to="/checkout">Checkout</Link>
       </div>
     );

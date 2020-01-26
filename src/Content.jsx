@@ -9,7 +9,7 @@ import Cart from "./Cart.jsx";
 class Content extends Component {
   constructor(props) {
     super(props);
-    this.state = { cart: [], allPosts: [], posts: [] };
+    this.state = { totalCost: 0, cart: [], allPosts: [], posts: [] };
   }
 
   componentDidMount = async () => {
@@ -21,8 +21,12 @@ class Content extends Component {
     this.loadAll();
   };
   addToCart = item => {
+    this.setState({
+      totalCost: this.state.totalCost + parseInt(item.price, 10)
+    });
     this.setState({ cart: this.state.cart.concat(item) });
   };
+
   removeItem = idx => {
     const cartCopy = this.state.cart.slice();
     cartCopy.splice(idx, 1);
@@ -40,7 +44,13 @@ class Content extends Component {
     return <Sell />;
   };
   renderCart = () => {
-    return <Cart cart={this.state.cart} removeItem={this.removeItem} />;
+    return (
+      <Cart
+        cart={this.state.cart}
+        removeItem={this.removeItem}
+        total={this.state.totalCost}
+      />
+    );
   };
   renderAllItems = () => {
     return (
