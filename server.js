@@ -74,6 +74,28 @@ app.post("/login", upload.none(), (req, res) => {
     res.send(JSON.stringify({ success: false }));
   });
 });
+app.post("/new-post", upload.single("img"), (req, res) => {
+  console.log("request to /new-post. body: ", req.body);
+  let file = req.file;
+  let frontendPath = "/uploads/" + file.filename;
+  dbo.collection("posts").insertOne({
+    brand: req.body.brand,
+    model: req.body.model,
+    year: req.body.year,
+    price: req.body.price,
+    displacement: req.body.displacement,
+    cylinders: req.body.cylinders,
+    cooling: req.body.cooling,
+    power: req.body.power,
+    torque: req.body.torque,
+    seatHeight: req.body.seatHeight,
+    weight: req.body.weight,
+    description: req.body.description,
+    frontendPath: frontendPath
+  });
+  res.send(JSON.stringify({ success: true }));
+});
+
 // Your endpoints go before this line
 
 app.all("/*", (req, res, next) => {

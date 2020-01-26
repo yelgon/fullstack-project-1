@@ -3,8 +3,7 @@ import { Route, BrowserRouter, Link } from "react-router-dom";
 import Navbar from "./Navbar.jsx";
 import Post from "./Post.jsx";
 import Details from "./Details.jsx";
-
-// import Sell from "./Sell.jsx";
+import Sell from "./Sell.jsx";
 
 class Content extends Component {
   constructor(props) {
@@ -31,7 +30,9 @@ class Content extends Component {
     }
     return <Details model={model} addToCart={this.addToCart} />;
   };
-
+  renderSell = () => {
+    return <Sell />;
+  };
   renderAllItems = () => {
     return (
       <div>
@@ -77,7 +78,7 @@ class Content extends Component {
   };
   loadHarleyDavidson = () => {
     let harleyDavidson = this.state.allPosts.filter(
-      e => e.brand === "harleyDavidson"
+      e => e.brand === "harley-davidson"
     );
     this.setState({ posts: harleyDavidson });
   };
