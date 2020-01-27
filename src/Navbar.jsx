@@ -10,9 +10,6 @@ class UnconnectedNavbar extends Component {
     return (
       <div className="Navbar">
         <div>
-          <button onClick={this.logout}> LOGOUT</button>
-        </div>
-        <div>
           <Link to="/">
             <img src="/static/logo.jpg" className="Navbar-img" />
           </Link>
@@ -27,6 +24,9 @@ class UnconnectedNavbar extends Component {
             <img height="50px" src="/static/cart2.png" />
             <span>{this.props.cartSize}</span>
           </Link>
+        </div>
+        <div>
+          <button onClick={this.logout}> LOGOUT</button>
         </div>
       </div>
     );

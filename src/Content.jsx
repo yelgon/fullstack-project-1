@@ -5,6 +5,7 @@ import Post from "./Post.jsx";
 import Details from "./Details.jsx";
 import Sell from "./Sell.jsx";
 import Cart from "./Cart.jsx";
+import Checkout from "./Checkout.jsx";
 
 class Content extends Component {
   constructor(props) {
@@ -54,6 +55,9 @@ class Content extends Component {
         total={this.state.totalCost}
       />
     );
+  };
+  renderCheckout = () => {
+    return <Checkout totalCost={this.state.totalCost} />;
   };
   renderAllItems = () => {
     return (
