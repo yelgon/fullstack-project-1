@@ -14,7 +14,7 @@ class UnconnectedNavbar extends Component {
         </div>
         <div>
           <Link to="/">
-            <img src="/static/logo2.png" className="Navbar-img" />
+            <img src="/static/logo.jpg" className="Navbar-img" />
           </Link>
         </div>
         <div>

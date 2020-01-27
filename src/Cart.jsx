@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 class Cart extends Component {
-  handleRemove = idx => {
-    this.props.removeItem(idx);
+  handleRemove = (item, idx) => {
+    this.props.removeItem(item, idx);
   };
   render() {
     return (
@@ -17,7 +17,9 @@ class Cart extends Component {
               </Link>
               <div>{item.model}</div>
               <div>$ {item.price}</div>
-              <button onClick={() => this.handleRemove(idx)}>Remove</button>
+              <button onClick={() => this.handleRemove(item, idx)}>
+                Remove
+              </button>
             </div>
           ))}
         </div>

@@ -27,10 +27,13 @@ class Content extends Component {
     this.setState({ cart: this.state.cart.concat(item) });
   };
 
-  removeItem = idx => {
+  removeItem = (item, idx) => {
     const cartCopy = this.state.cart.slice();
     cartCopy.splice(idx, 1);
     this.setState({ cart: cartCopy });
+    this.setState({
+      totalCost: this.state.totalCost - parseInt(item.price, 10)
+    });
   };
   renderItemDetails = routerData => {
     const modelName = routerData.match.params.model;
