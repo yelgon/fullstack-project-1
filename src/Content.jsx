@@ -6,6 +6,7 @@ import Details from "./Details.jsx";
 import Sell from "./Sell.jsx";
 import Cart from "./Cart.jsx";
 import Checkout from "./Checkout.jsx";
+// import OrderSuccess from "./OrderSuccess.jsx";
 
 class Content extends Component {
   constructor(props) {
@@ -56,9 +57,21 @@ class Content extends Component {
       />
     );
   };
-  renderCheckout = () => {
-    return <Checkout totalCost={this.state.totalCost} />;
+  renderCheckout = routerData => {
+    return (
+      <Checkout
+        totalCost={this.state.totalCost}
+        history={routerData.history}
+        clearToCart={this.clearToCart}
+      />
+    );
   };
+  clearToCart = () => {
+    this.setState({ cart: [] });
+  };
+  // proceedToCheckout = () => {
+  //   return <OrderSuccess clearToCart={this.clearToCart} />;
+  // };
   renderAllItems = () => {
     return (
       <div>
@@ -143,6 +156,7 @@ class Content extends Component {
             path="/detail/:model"
             render={this.renderItemDetails}
           />
+          {/* <Route exact={true} path="/order" render={this.proceedToCheckout} /> */}
         </div>
       </BrowserRouter>
     );

@@ -30,6 +30,11 @@ class Checkout extends Component {
         (Math.pow(1 + this.state.rate, this.state.terms) - 1)
     });
   };
+  proceedToCheckout = () => {
+    this.props.clearToCart();
+    alert("Thank you for your order");
+    this.props.history.push("/");
+  };
   render() {
     return (
       <div>
@@ -62,9 +67,10 @@ class Checkout extends Component {
           </div>
         </form>
 
+        <h3>Estimated Payment : </h3>
         <h2>
-          Monthly payment : ${" "}
-          {Math.round((this.state.yearlyCost * 100) / 12) / 100}
+          {" "}
+          $ {Math.round((this.state.yearlyCost * 100) / 12) / 100} / month
         </h2>
         <div className="payment-box">
           <form onSubmit={this.submitHandler}>
@@ -75,6 +81,8 @@ class Checkout extends Component {
             <input placeholder="CVV" />
           </form>
         </div>
+
+        <button onClick={this.proceedToCheckout}>Proceed to checkout</button>
       </div>
     );
   }
