@@ -3,17 +3,22 @@ import React, { Component } from "react";
 class Checkout extends Component {
   constructor(props) {
     super(props);
-    this.state = { yearlyCost: 0, terms: 1, rate: 0.0099, monthlyPayment: 0 };
+    this.state = { yearlyCost: 0, terms: 1, rate: 0.0099 };
+  }
+  componentDidMount() {
+    this.setState({
+      yearlyCost:
+        (this.props.totalCost *
+          Math.pow(1 + this.state.rate, this.state.terms) *
+          this.state.rate) /
+        (Math.pow(1 + this.state.rate, this.state.terms) - 1)
+    });
   }
   termHandler = event => {
-    this.setState({ terms: parseInt(event.target.value, 10) }, () =>
-      console.log(this.state.yearlyCost)
-    );
+    this.setState({ terms: parseInt(event.target.value, 10) });
   };
   rateHandler = event => {
-    this.setState({ rate: parseFloat(event.target.value, 10) }, () =>
-      console.log(this.state.yearlyCost)
-    );
+    this.setState({ rate: parseFloat(event.target.value, 10) });
   };
   submitHandler = () => {
     event.preventDefault();
@@ -22,8 +27,7 @@ class Checkout extends Component {
         (this.props.totalCost *
           Math.pow(1 + this.state.rate, this.state.terms) *
           this.state.rate) /
-        (Math.pow(1 + this.state.rate, this.state.terms) - 1),
-      monthlyPayment: this.state.yearlyCost
+        (Math.pow(1 + this.state.rate, this.state.terms) - 1)
     });
   };
   render() {
@@ -31,7 +35,7 @@ class Checkout extends Component {
       <div>
         <h2>Total Price : $ {this.props.totalCost} </h2>
         <form onSubmit={this.submitHandler}>
-          <div className="payment-option">
+          <div>
             <div>
               <h4>Terms</h4>
               <select onChange={this.termHandler}>
@@ -59,7 +63,8 @@ class Checkout extends Component {
         </form>
 
         <h2>
-          Monthly payment : $ {Math.round(this.state.monthlyPayment / 12)}
+          Monthly payment : ${" "}
+          {Math.round((this.state.yearlyCost * 100) / 12) / 100}
         </h2>
         <div className="payment-box">
           <form onSubmit={this.submitHandler}>
