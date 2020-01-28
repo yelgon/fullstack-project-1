@@ -23,11 +23,11 @@ body {
 }
 .Navbar {
   display: flex;
-  height: 100px;
+  height: 60px;
   background-color: white;
 }
 .Navbar-img {
-  height: 70px;
+  height: 55px;
 }
 .payment-box {
   height: 100px;

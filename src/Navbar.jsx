@@ -16,7 +16,7 @@ class UnconnectedNavbar extends Component {
         </div>
         <div>
           <Link to="/sell">
-            <h3>Want to Sell?</h3>
+            <h3>Sell</h3>
           </Link>
         </div>
         <div>
