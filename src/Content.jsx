@@ -44,8 +44,8 @@ class Content extends Component {
     }
     return <Details model={model} addToCart={this.addToCart} />;
   };
-  renderSell = () => {
-    return <Sell />;
+  renderSell = routerData => {
+    return <Sell history={routerData.history} />;
   };
   renderCart = () => {
     return (
