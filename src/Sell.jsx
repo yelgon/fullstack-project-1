@@ -17,20 +17,6 @@ class Sell extends Component {
       weight: "",
       file: "",
       description: "",
-      inputName: [
-        "brand",
-        "model",
-        "year",
-        "price",
-        "displacement",
-        "cylinders",
-        "cooling",
-        "power",
-        "torque",
-        "seatHeight",
-        "weight",
-        "description"
-      ],
       file: ""
     };
   }
@@ -64,9 +50,23 @@ class Sell extends Component {
   };
 
   render = () => {
+    const inputName = [
+      "brand",
+      "model",
+      "year",
+      "price",
+      "displacement",
+      "cylinders",
+      "cooling",
+      "power",
+      "torque",
+      "seatHeight",
+      "weight",
+      "description"
+    ];
     return (
       <form onSubmit={this.handleSubmit}>
-        {this.state.inputName.map(name => {
+        {inputName.map(name => {
           return (
             <div>
               <span>{name} : </span>

@@ -39,6 +39,7 @@ class Details extends Component {
           <li>DESCIPTION: {description}</li>
         </ul>
         <button onClick={this.addToCart}>Add To Cart</button>
+        <Link to="/">HOME</Link>
       </div>
     );
   }
