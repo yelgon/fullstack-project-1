@@ -10,18 +10,14 @@ class UnconnectedNavbar extends Component {
     return (
       <div className="Navbar">
         <div>
-          <Link to="/">
-            <img src="/static/logo.jpg" className="Navbar-img" />
-          </Link>
+          <Link to="/">MotorCycle</Link>
         </div>
         <div>
-          <Link to="/sell">
-            <h3>Sell</h3>
-          </Link>
+          <Link to="/sell">Sell</Link>
         </div>
         <div>
           <Link to="/cart">
-            <img height="50px" src="/static/cart2.png" />
+            Cart
             <span>{this.props.cartSize}</span>
           </Link>
         </div>

@@ -10,10 +10,14 @@ class Post extends Component {
   render = () => {
     return (
       <div>
-        <div>{this.props.contents.brand}</div>
         <Link to={"/detail/" + this.props.contents.model}>
-          <img height="200px" src={this.props.contents.frontendPath} />
+          <img
+            height="200px"
+            width="300px"
+            src={this.props.contents.frontendPath}
+          />
         </Link>
+        <div>{this.props.contents.brand}</div>
         <div>{this.props.contents.model}</div>
         <div>$ {this.props.contents.price}</div>
       </div>
