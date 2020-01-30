@@ -6,9 +6,11 @@ body {
 }
 .Navbar {
   background: white;
-  margin: 0;
-  display: flex;
-  justify-content: space-around;
+  margin: 50px;
+  margin-bottom: 0;
+  display: grid;
+  grid-template-columns: 60% auto auto auto;
+  /* text-align: center; */
   align-items: center;
 }
 
