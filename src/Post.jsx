@@ -12,8 +12,8 @@ class Post extends Component {
       <div>
         <Link to={"/detail/" + this.props.contents.model}>
           <img
-            height="200px"
-            width="300px"
+            height="150px"
+            width="210px"
             src={this.props.contents.frontendPath}
           />
         </Link>

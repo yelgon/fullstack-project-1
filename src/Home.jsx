@@ -4,28 +4,22 @@ import styled from "styled-components";
 
 const Search = styled.div`
   text-align: left;
-  margin-left: 10px;
-  margin-bottom: 10px;
+  margin-left: 50px;
+  margin-bottom: 5px;
 `;
 
 const AllItem = styled.div`
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: auto auto auto auto;
   grid-gap: 20px;
-  margin: 0px;
-  margin-left: 10px;
+
+  margin-left: 50px;
 `;
 const Wrapper = styled.div`
   margin-top: 10px;
   display: flix;
 `;
-const Button = styled.div`
-  .button {
-    height: 150px;
-  }
 
-  padding: 10px;
-`;
 class Home extends Component {
   constructor(props) {
     super(props);
