@@ -3,7 +3,9 @@ import Post from "./Post.jsx";
 import styled from "styled-components";
 
 const Search = styled.div`
-  text-align: right;
+  text-align: left;
+  margin-left: 10px;
+  margin-bottom: 10px;
 `;
 
 const AllItem = styled.div`
@@ -11,7 +13,6 @@ const AllItem = styled.div`
   grid-template-columns: auto auto auto;
   grid-gap: 20px;
   margin: 0px;
-
   margin-left: 10px;
 `;
 const Wrapper = styled.div`
@@ -19,14 +20,11 @@ const Wrapper = styled.div`
   display: flix;
 `;
 const Button = styled.div`
-  .div {
-    padding: 10px;
+  .button {
+    height: 150px;
   }
-  width: 200px;
-  text-align: left;
-  margin-left: 10px;
-  background-color: white;
-  padding: 20px;
+
+  padding: 10px;
 `;
 class Home extends Component {
   constructor(props) {
@@ -83,35 +81,19 @@ class Home extends Component {
   render() {
     return (
       <Wrapper>
-        <Button>
-          <div>
-            <button onClick={this.loadAll}> Show All </button>
-          </div>
-          <div>
-            <button onClick={this.loadHonda}> HONDA </button>
-          </div>
-          <div>
-            <button onClick={this.loadDucati}> DUCATI </button>
-          </div>
-          <div>
-            <button onClick={this.loadYamaha}> YAMAHA </button>
-          </div>
-          <div>
-            <button onClick={this.loadSuzuki}> SUZUKI </button>
-          </div>
-          <div>
-            <button onClick={this.loadAprilia}> APRILIA </button>
-          </div>
-          <div>
-            <button onClick={this.loadBmw}> BMW </button>
-          </div>
-          <div>
-            <button onClick={this.loadKawasaki}> KAWASAKI </button>
-          </div>
-          <div>
-            <button onClick={this.loadHarleyDavidson}>HALRLEY DAVIDSON</button>
-          </div>
-        </Button>
+        <div className="button">
+          <button onClick={this.loadAll}> SHOW ALL </button>
+          <button onClick={this.loadHonda}> HONDA </button>
+          <button onClick={this.loadDucati}> DUCATI </button>
+          <button onClick={this.loadYamaha}> YAMAHA </button>
+          <button onClick={this.loadSuzuki}> SUZUKI </button>
+          <button onClick={this.loadAprilia}> APRILIA </button>
+          <button onClick={this.loadBmw}> BMW </button>
+          <button onClick={this.loadKawasaki}> KAWASAKI </button>
+          <button onClick={this.loadHarleyDavidson}>
+            HALRLEY DAVIDSON
+          </button>{" "}
+        </div>
         <div>
           <Search>
             <div>
