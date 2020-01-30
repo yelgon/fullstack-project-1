@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+// import styled from "styled-components";
 
 class UnconnectedNavbar extends Component {
   logout = () => {
@@ -15,16 +16,20 @@ class UnconnectedNavbar extends Component {
           </Link>
         </div>
         <div>
-          <Link to="/sell">Sell</Link>
-        </div>
-        <div>
-          <Link to="/cart">
-            Cart
-            <span>{this.props.cartSize}</span>
+          <Link to="/sell" className="navbar-link">
+            Sell
           </Link>
         </div>
         <div>
-          <button onClick={this.logout}> LOGOUT</button>
+          <Link to="/cart" className="navbar-link">
+            Cart (<span>{this.props.cartSize}</span>)
+          </Link>
+        </div>
+        <div>
+          <button onClick={this.logout} className="navbar-link">
+            {" "}
+            Logout
+          </button>
         </div>
       </div>
     );

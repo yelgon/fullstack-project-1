@@ -12,7 +12,7 @@ const AllItem = styled.div`
   display: grid;
   grid-template-columns: auto auto auto auto;
   grid-gap: 20px;
-  margin-left: 50px;
+  margin-left: 40px;
 `;
 const Wrapper = styled.div`
   margin-top: 10px;
@@ -83,9 +83,7 @@ class Home extends Component {
           <button onClick={this.loadAprilia}> APRILIA </button>
           <button onClick={this.loadBmw}> BMW </button>
           <button onClick={this.loadKawasaki}> KAWASAKI </button>
-          <button onClick={this.loadHarleyDavidson}>
-            HALRLEY DAVIDSON
-          </button>{" "}
+          <button onClick={this.loadHarleyDavidson}>HALRLEY</button>{" "}
         </div>
         <div>
           <Search>

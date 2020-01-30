@@ -35,7 +35,7 @@ class Signup extends Component {
         <div>
           Password{" "}
           <input
-            type="text"
+            type="password"
             value={this.state.passwordInput}
             onChange={this.passwordChange}
           ></input>

@@ -6,11 +6,11 @@ body {
 }
 .Navbar {
   background: white;
-  margin: 50px;
+  margin: 15px;
   margin-bottom: 0;
   display: grid;
   grid-template-columns: 60% auto auto auto;
-  /* text-align: center; */
+  grid-gap: 20px;
   align-items: center;
 }
 
@@ -33,6 +33,7 @@ body {
   padding: 10px;
   font-style: italic;
   font-size: 15px;
+  width: 150px;
 }
 .button > button:hover {
   font-style: bold;
@@ -41,4 +42,15 @@ body {
 }
 .item-detail :hover {
   transform: scale(1.25);
+}
+
+.navbar-link {
+  background-color: red;
+  color: white;
+  padding: 5px 5px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 12px;
+  margin-right: 10px;
+  font-family: "Times New Roman", Times, serif;
 }
