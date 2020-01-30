@@ -12,8 +12,10 @@ const AllItem = styled.div`
   display: grid;
   grid-template-columns: auto auto auto auto;
   grid-gap: 20px;
-
   margin-left: 50px;
+  > img:hover {
+    transform: scale(1.5);
+  }
 `;
 const Wrapper = styled.div`
   margin-top: 10px;

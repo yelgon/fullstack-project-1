@@ -24,5 +24,10 @@
   font-size: 15px;
 }
 .button > button:hover {
-  background-color: rgb(121, 125, 131);
+  font-style: bold;
+  font-size: 105%;
+  box-shadow: 5px 5px #636363;
+}
+.item-detail :hover {
+  transform: scale(1.25);
 }
