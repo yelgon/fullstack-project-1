@@ -10,7 +10,9 @@ class UnconnectedNavbar extends Component {
     return (
       <div className="Navbar">
         <div>
-          <Link to="/">MotorCycle</Link>
+          <Link to="/">
+            <img height="100px" src="/static/logo.png" />
+          </Link>
         </div>
         <div>
           <Link to="/sell">Sell</Link>
