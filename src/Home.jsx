@@ -5,7 +5,7 @@ import styled from "styled-components";
 const Search = styled.div`
   text-align: left;
   margin-left: 50px;
-  margin-bottom: 5px;
+  margin-bottom: 35px;
 `;
 
 const AllItem = styled.div`
@@ -13,9 +13,6 @@ const AllItem = styled.div`
   grid-template-columns: auto auto auto auto;
   grid-gap: 20px;
   margin-left: 50px;
-  > img:hover {
-    transform: scale(1.5);
-  }
 `;
 const Wrapper = styled.div`
   margin-top: 10px;
@@ -25,7 +22,7 @@ const Wrapper = styled.div`
 class Home extends Component {
   constructor(props) {
     super(props);
-    this.state = { posts: [] };
+    this.state = { posts: this.props.allPosts };
   }
 
   handleQuery = event => {

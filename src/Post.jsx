@@ -1,5 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
+
+const Price = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
 
 class Post extends Component {
   constructor(props) {
@@ -17,9 +23,10 @@ class Post extends Component {
             src={this.props.contents.frontendPath}
           />
         </Link>
-        <div>{this.props.contents.brand}</div>
-        <div>{this.props.contents.model}</div>
-        <div>$ {this.props.contents.price}</div>
+        <Price>
+          <div>{this.props.contents.model}</div>
+          <div>$ {this.props.contents.price}</div>
+        </Price>
       </div>
     );
   };
