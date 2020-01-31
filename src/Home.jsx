@@ -4,18 +4,18 @@ import styled from "styled-components";
 
 const Search = styled.div`
   text-align: left;
-  margin-left: 50px;
+  margin-left: 10px;
   margin-bottom: 35px;
 `;
 
 const AllItem = styled.div`
   display: grid;
   grid-template-columns: auto auto auto auto;
-  grid-gap: 20px;
-  margin-left: 40px;
+  grid-gap: 10px;
+  margin-left: 10px;
 `;
 const Wrapper = styled.div`
-  margin-top: 10px;
+  margin-top: 10;
   display: flix;
 `;
 

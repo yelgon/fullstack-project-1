@@ -5,6 +5,7 @@ import styled from "styled-components";
 const Price = styled.div`
   display: flex;
   justify-content: space-around;
+  margin-top: 30px;
 `;
 
 class Post extends Component {

@@ -7,11 +7,12 @@ body {
 .Navbar {
   background: white;
   margin: 15px;
-  margin-bottom: 0;
+  margin-bottom: 10px;
   display: grid;
   grid-template-columns: 60% auto auto auto;
   grid-gap: 20px;
   align-items: center;
+  justify-content: space-around;
 }
 
 .custom-file-input {
@@ -26,7 +27,7 @@ body {
   position: sticky;
   height: 60vh;
   top: 0;
-  margin-left: 40px;
+  margin-left: 10px;
 }
 .button > button {
   height: 35px;
@@ -42,6 +43,14 @@ body {
 }
 .item-detail :hover {
   transform: scale(1.25);
+}
+.item-detail {
+  margin: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 30px;
+
+  box-shadow: 5px 5px gray;
 }
 
 .navbar-link {
