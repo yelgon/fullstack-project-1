@@ -11,13 +11,13 @@ class UnconnectedNavbar extends Component {
     return (
       <div className="Navbar">
         <div>
-          <Link to="/">
-            <img height="100px" src="/static/logo.png" />
+          <Link to="/sell" className="navbar-link">
+            Sell
           </Link>
         </div>
         <div>
-          <Link to="/sell" className="navbar-link">
-            Sell
+          <Link to="/">
+            <img height="100px" src="/static/logo.png" />
           </Link>
         </div>
         <div>

@@ -1,6 +1,23 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 
+const MainTitle = styled.div`
+  border-bottom: 3px double black;
+  margin: 200px;
+  margin-bottom: 0;
+  margin-top: 0;
+`;
+const TotalCost = styled.div`
+  font-size: 30px;
+  text-align: center;
+`;
+const Bottom = styled.div`
+  display: grid;
+  margin: 100px;
+  grid-template-columns: 80% auto;
+  justify-items: end;
+`;
 class Cart extends Component {
   handleRemove = (item, idx) => {
     this.props.removeItem(item, idx);
@@ -8,23 +25,37 @@ class Cart extends Component {
   render() {
     return (
       <div>
-        <h3> You're buying </h3>
-        <div>
-          {this.props.cart.map((item, idx) => (
-            <div>
-              <Link to={"/detail/" + item.model}>
-                <img height="100px" src={item.frontendPath} />
-              </Link>
-              <div>{item.model}</div>
-              <div>$ {item.price}</div>
-              <button onClick={() => this.handleRemove(item, idx)}>
+        <MainTitle>
+          {" "}
+          <h2>Items In Your Cart</h2>{" "}
+        </MainTitle>
+        {this.props.cart.map((item, idx) => (
+          <div className="Cart-wrapper">
+            <Link to={"/detail/" + item.model}>
+              <img height="100px" src={item.frontendPath} className="picture" />
+            </Link>
+            <div className="year">{item.year}</div>
+            <div className="model">{item.model}</div>
+            <div className="price">$ {item.price}</div>
+            <div className="remove">
+              {" "}
+              <button
+                onClick={() => this.handleRemove(item, idx)}
+                className="remove-button"
+              >
                 Remove
-              </button>
+              </button>{" "}
             </div>
-          ))}
-        </div>
-        <div>Total Cost : $ {this.props.total}</div>
-        <Link to="/checkout">Checkout</Link>
+          </div>
+        ))}
+        <Bottom>
+          <TotalCost>
+            <div>Total Cost : $ {this.props.total}</div>
+          </TotalCost>
+          <Link to="/checkout" className="checkout">
+            Checkout
+          </Link>
+        </Bottom>
       </div>
     );
   }
