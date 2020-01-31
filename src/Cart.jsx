@@ -14,8 +14,8 @@ const TotalCost = styled.div`
 `;
 const Bottom = styled.div`
   display: grid;
-  margin: 100px;
-  grid-template-columns: 80% auto;
+  margin: 10px;
+  grid-template-columns: 75% auto;
   justify-items: end;
 `;
 class Cart extends Component {
