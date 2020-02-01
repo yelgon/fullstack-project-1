@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import styled from "styled-components";
+
+const Payment = styled.div``;
 
 class Checkout extends Component {
   constructor(props) {
@@ -32,15 +35,15 @@ class Checkout extends Component {
   };
   proceedToCheckout = () => {
     this.props.clearToCart();
-    alert("Thank you for your order");
+    alert("Thank you for your order\r\n Automatically paid every month");
     this.props.history.push("/");
   };
   render() {
     return (
-      <div>
-        <h2>Total Price : $ {this.props.totalCost} </h2>
-        <form onSubmit={this.submitHandler}>
-          <div>
+      <div className="checkout-background">
+        <div className="checkout-box">
+          <h2>Total Price : $ {this.props.totalCost} </h2>
+          <form onSubmit={this.submitHandler} className="total-form">
             <div>
               <h4>Terms</h4>
               <select onChange={this.termHandler}>
@@ -63,26 +66,38 @@ class Checkout extends Component {
                 <option value="0.0599">5.99 %</option>
               </select>
             </div>
-            <input type="submit" value="Calculate" />
+            <div>
+              <input type="submit" value="Calculator" className="calculator" />
+            </div>
+          </form>
+
+          <h3>Estimated Payment </h3>
+          <h2>
+            {" "}
+            $ {Math.round((this.state.yearlyCost * 100) / 12) / 100} /{" "}
+            <span>month</span>
+          </h2>
+        </div>
+        <form onSubmit={this.proceedToCheckout} className="checkout_form">
+          <h4>Credit Card</h4>
+          <div className="section">
+            <input type="text" placeholder="Card Number" />
+          </div>
+          <div className="section">
+            <input type="text" placeholder="Cardholder name" />
+          </div>
+          <div className="last_section">
+            <div className="item">
+              <input type="text" placeholder="MM/YY" />
+            </div>
+            <div className="item">
+              <input type="text" placeholder="CVV" />
+            </div>
+          </div>
+          <div className="checkout-btn">
+            <input type="submit" value="PAY" />
           </div>
         </form>
-
-        <h3>Estimated Payment : </h3>
-        <h2>
-          {" "}
-          $ {Math.round((this.state.yearlyCost * 100) / 12) / 100} / month
-        </h2>
-        <div className="payment-box">
-          <form onSubmit={this.submitHandler}>
-            <h4>Credit Card</h4>
-            <input placeholder="Card Number" />
-            <input placeholder="MM" />
-            <input placeholder="YY" />
-            <input placeholder="CVV" />
-          </form>
-        </div>
-
-        <button onClick={this.proceedToCheckout}>Proceed to checkout</button>
       </div>
     );
   }
