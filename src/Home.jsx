@@ -4,8 +4,8 @@ import styled from "styled-components";
 
 const Search = styled.div`
   text-align: left;
-  margin-left: 10px;
-  margin-bottom: 35px;
+  margin-left: 20px;
+  margin-bottom: 10px;
 `;
 
 const AllItem = styled.div`

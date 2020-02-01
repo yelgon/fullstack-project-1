@@ -23,25 +23,27 @@ class Signup extends Component {
   };
   render = () => {
     return (
-      <form onSubmit={this.submitHandler}>
-        <div>
-          Username{" "}
+      <form onSubmit={this.submitHandler} className="signup-box">
+        <div className="textbox">
+          <i class="fa fa-user" aria-hidden="true"></i>
           <input
             type="text"
+            placeholder="Username"
             value={this.state.usernameInput}
             onChange={this.usernameChange}
           ></input>
         </div>
-        <div>
-          Password{" "}
+        <div className="textbox">
+          <i class="fa fa-lock" aria-hidden="true"></i>
           <input
             type="password"
+            placeholder="Password"
             value={this.state.passwordInput}
             onChange={this.passwordChange}
           ></input>
         </div>
         <div>
-          <input type="submit" value="SIGNUP" />
+          <input type="submit" value="SIGNUP" className="btn" />
         </div>
       </form>
     );

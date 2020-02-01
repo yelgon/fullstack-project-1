@@ -14,7 +14,7 @@ class UnconnectedApp extends Component {
       );
     }
     return (
-      <div>
+      <div className="background">
         <Signup />
         <Login />
       </div>
