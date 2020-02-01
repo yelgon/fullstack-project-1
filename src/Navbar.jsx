@@ -12,23 +12,23 @@ class UnconnectedNavbar extends Component {
       <div className="Navbar">
         <div>
           <Link to="/sell" className="navbar-link">
-            Sell
+            SELL
           </Link>
         </div>
         <div>
-          <Link to="/">
-            <img height="100px" src="/static/logo.png" />
+          <Link to="/" className="navbar-link logo">
+            MOTORCYCLE
           </Link>
         </div>
         <div>
           <Link to="/cart" className="navbar-link">
-            Cart (<span>{this.props.cartSize}</span>)
+            CART (<span>{this.props.cartSize}</span>)
           </Link>
         </div>
         <div>
           <button onClick={this.logout} className="navbar-link">
             {" "}
-            Logout
+            LOGOUT
           </button>
         </div>
       </div>
