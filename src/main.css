@@ -89,16 +89,22 @@ body {
   margin-left: 10px;
 }
 .button > button {
-  height: 35px;
-  padding: 10px;
-  font-style: italic;
+  height: 30px;
+  padding: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   font-size: 15px;
-  width: 150px;
+  width: 130px;
+  border: none;
+  position: relative;
 }
 .button > button:hover {
   font-style: bold;
-  font-size: 105%;
-  box-shadow: 5px 5px #636363;
+  color: white;
+  background-color: rgb(10, 47, 90);
+  font-size: 103%;
+  box-shadow: 0 0 10px rgb(53, 136, 230), 0 0 20px rgb(53, 136, 230),
+    0 0 30px rgb(53, 136, 230);
 }
 .item-detail :hover {
   transform: scale(1.25);

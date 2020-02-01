@@ -11,7 +11,6 @@ const Search = styled.div`
 const AllItem = styled.div`
   display: grid;
   grid-template-columns: auto auto auto auto;
-  grid-gap: 10px;
   margin-left: 10px;
 `;
 const Wrapper = styled.div`
