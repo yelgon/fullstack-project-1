@@ -1,4 +1,44 @@
 import React, { Component } from "react";
+import styled from "styled-components";
+
+const Wrapper = styled.div`
+  height: 100vh;
+  justify-content: center;
+  margin: 20px;
+  display: flex;
+`;
+const SecondBox1 = styled.div`
+  margin: 30px;
+  padding-right: 20px;
+  input {
+    height: 18px;
+    width: 250px;
+    margin: 5px;
+    padding-left: 5px;
+  }
+`;
+const SecondBox2 = styled.div`
+  margin: 30px;
+  input {
+    height: 40px;
+    width: 250px;
+    margin: 5px;
+  }
+  .upload {
+    background: orange;
+  }
+`;
+const Spec = styled.div`
+  font-size: 14px;
+  font-weight: bold;
+`;
+const ImagePreview = styled.div`
+  width: 350px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+`;
 
 class Sell extends Component {
   constructor(props) {
@@ -17,7 +57,8 @@ class Sell extends Component {
       weight: "",
       file: "",
       description: "",
-      file: ""
+      file: "",
+      previewImg: null
     };
   }
   handleSubmit = evt => {
@@ -42,7 +83,10 @@ class Sell extends Component {
   };
 
   fileChangeHandler = event => {
-    this.setState({ file: event.target.files[0] });
+    this.setState({
+      file: event.target.files[0],
+      previewImg: URL.createObjectURL(event.target.files[0])
+    });
   };
 
   eventChangeHandler = (event, name) => {
@@ -66,20 +110,33 @@ class Sell extends Component {
     ];
     return (
       <form onSubmit={this.handleSubmit}>
-        {inputName.map(name => {
-          return (
+        <Wrapper>
+          <SecondBox1>
+            {inputName.map(name => {
+              return (
+                <div>
+                  <div>
+                    <Spec>{name}</Spec>
+                  </div>
+                  <input onChange={e => this.eventChangeHandler(e, name)} />
+                </div>
+              );
+            })}
+          </SecondBox1>
+          <SecondBox2>
             <div>
-              <span>{name} : </span>
-              <input onChange={e => this.eventChangeHandler(e, name)} />
+              <input type="file" onChange={this.fileChangeHandler} />
+              <ImagePreview>
+                <img
+                  height="250px"
+                  src={this.state.previewImg}
+                  className="image-preview__image"
+                />
+              </ImagePreview>
             </div>
-          );
-        })}
-
-        <div>
-          upload picture
-          <input type="file" onChange={this.fileChangeHandler} />
-        </div>
-        <input type="submit" value="UPLOAD" />
+            <input type="submit" value="UPLOAD" className="upload" />
+          </SecondBox2>
+        </Wrapper>
       </form>
     );
   };

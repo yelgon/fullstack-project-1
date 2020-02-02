@@ -33,7 +33,7 @@ class UnconnectedLogin extends Component {
     return (
       <form onSubmit={this.submitHandler} className="login-box">
         <div className="textbox">
-          <i class="fa fa-user" aria-hidden="true"></i>
+          <i className="fa fa-user" aria-hidden="true"></i>
           <input
             type="text"
             placeholder="Username"
@@ -42,7 +42,7 @@ class UnconnectedLogin extends Component {
           ></input>
         </div>
         <div className="textbox">
-          <i class="fa fa-lock" aria-hidden="true"></i>
+          <i className="fa fa-lock" aria-hidden="true"></i>
           <input
             type="password"
             placeholder="Password"

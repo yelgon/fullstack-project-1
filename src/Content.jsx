@@ -63,7 +63,7 @@ class Content extends Component {
     );
   };
   clearToCart = () => {
-    this.setState({ cart: [] });
+    this.setState({ cart: [], totalCost: 0 });
   };
   renderAllItems = () => {
     return (
