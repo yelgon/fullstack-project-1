@@ -68,7 +68,7 @@ class Details extends Component {
 
         <Spec>
           <h1>{model}</h1>
-          <Price> {price}$</Price>
+          <Price> {price} $</Price>
           <DetailWrapper>
             <Desc>
               <div>BRAND</div>
