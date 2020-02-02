@@ -274,7 +274,8 @@ body {
   margin-top: 25px;
   outline: none;
   font-size: 20px;
-  box-shadow: 2px 2px black;
+  box-shadow: 3px 3px black;
+  border-radius: 10px;
 }
 .checkout-box {
   text-align: center;
@@ -306,6 +307,6 @@ body {
   height: 100px;
   font-size: 15px;
   font-weight: bold;
-  box-shadow: 2px 2px black;
+  box-shadow: 3px 3px black;
   border-radius: 10px;
 }

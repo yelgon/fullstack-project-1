@@ -9,12 +9,13 @@ const MainTitle = styled.div`
   margin-top: 0;
 `;
 const TotalCost = styled.div`
-  font-size: 30px;
+  font-size: 25px;
+  font-weight: bold;
   text-align: center;
 `;
 const Bottom = styled.div`
   display: grid;
-  margin: 10px;
+  margin-top: 20px;
   grid-template-columns: 75% auto;
   justify-items: end;
 `;

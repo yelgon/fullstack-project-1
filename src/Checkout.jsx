@@ -78,10 +78,10 @@ class Checkout extends Component {
         <form onSubmit={this.proceedToCheckout} className="checkout_form">
           <h4>Credit Card</h4>
           <div className="section">
-            <input type="text" placeholder="Card Number" />
+            <input type="text" placeholder="CARD NUMBER" />
           </div>
           <div className="section">
-            <input type="text" placeholder="Cardholder name" />
+            <input type="text" placeholder="CARDHOLDER NAME" />
           </div>
           <div className="last_section">
             <div className="item">
