@@ -1,15 +1,24 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+const Bigbox = styled.div`
+  text-align: center;
+  justify-content: center;
+  margin: 20px;
+  background: orange;
+  border: 1px solid black;
+`;
 
 const Wrapper = styled.div`
-  height: 100vh;
   justify-content: center;
   margin: 20px;
   display: flex;
+  background: white;
+  border: 1px solid black;
 `;
 const SecondBox1 = styled.div`
-  margin: 30px;
+  margin: 20px;
   padding-right: 20px;
+  text-align: left;
   input {
     height: 18px;
     width: 250px;
@@ -18,7 +27,7 @@ const SecondBox1 = styled.div`
   }
 `;
 const SecondBox2 = styled.div`
-  margin: 30px;
+  margin: 20px;
   input {
     height: 40px;
     width: 250px;
@@ -26,6 +35,7 @@ const SecondBox2 = styled.div`
   }
   .upload {
     background: orange;
+    box-shadow: 2px 2px black;
   }
 `;
 const Spec = styled.div`
@@ -109,35 +119,37 @@ class Sell extends Component {
       "description"
     ];
     return (
-      <form onSubmit={this.handleSubmit}>
-        <Wrapper>
-          <SecondBox1>
-            {inputName.map(name => {
-              return (
-                <div>
+      <Bigbox>
+        <form onSubmit={this.handleSubmit}>
+          <Wrapper>
+            <SecondBox1>
+              {inputName.map(name => {
+                return (
                   <div>
-                    <Spec>{name}</Spec>
+                    <div>
+                      <Spec>{name}</Spec>
+                    </div>
+                    <input onChange={e => this.eventChangeHandler(e, name)} />
                   </div>
-                  <input onChange={e => this.eventChangeHandler(e, name)} />
-                </div>
-              );
-            })}
-          </SecondBox1>
-          <SecondBox2>
-            <div>
-              <input type="file" onChange={this.fileChangeHandler} />
-              <ImagePreview>
-                <img
-                  height="250px"
-                  src={this.state.previewImg}
-                  className="image-preview__image"
-                />
-              </ImagePreview>
-            </div>
-            <input type="submit" value="UPLOAD" className="upload" />
-          </SecondBox2>
-        </Wrapper>
-      </form>
+                );
+              })}
+            </SecondBox1>
+            <SecondBox2>
+              <div>
+                <input type="file" onChange={this.fileChangeHandler} />
+                <ImagePreview>
+                  <img
+                    height="250px"
+                    src={this.state.previewImg}
+                    className="image-preview__image"
+                  />
+                </ImagePreview>
+              </div>
+              <input type="submit" value="UPLOAD" className="upload" />
+            </SecondBox2>
+          </Wrapper>
+        </form>
+      </Bigbox>
     );
   };
 }
