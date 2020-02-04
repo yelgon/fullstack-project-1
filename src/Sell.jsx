@@ -10,7 +10,7 @@ const Bigbox = styled.div`
 
 const Wrapper = styled.div`
   justify-content: center;
-  margin: 20px;
+  margin: 5px;
   display: flex;
   background: white;
   border: 1px solid black;
