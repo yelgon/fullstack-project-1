@@ -66,6 +66,7 @@ app.post("/login", upload.none(), (req, res) => {
     }
     if (user === null) {
       res.send(JSON.stringify({ success: false }));
+      return;
     }
     if (user.password === sha1(pwd)) {
       res.send(JSON.stringify({ success: true }));

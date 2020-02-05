@@ -68,7 +68,7 @@ class Sell extends Component {
       file: "",
       description: "",
       file: "",
-      previewImg: null
+      previewImg: ""
     };
   }
   handleSubmit = evt => {
