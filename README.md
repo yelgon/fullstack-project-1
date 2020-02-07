@@ -1,9 +1,2 @@
-To start the server, run `nodemon server.js`
+First Full stack Project - Motorcycle market place
 
-Modify the `server.js` file to add endpoints
-
-The frontend code goes in the `/src` directory
-
-
-
-Done!!!!
