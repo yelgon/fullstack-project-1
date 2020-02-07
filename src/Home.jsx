@@ -21,68 +21,59 @@ const Wrapper = styled.div`
 class Home extends Component {
   constructor(props) {
     super(props);
-    this.state = { posts: this.props.allPosts };
+    this.state = { posts: [], visiblePosts: [], filter: "all" };
   }
-
+  componentDidMount = async () => {
+    let response = await fetch("/all-posts");
+    let body = await response.text();
+    console.log("/all-posts response", body);
+    body = JSON.parse(body);
+    this.setState({ posts: body });
+    this.setState({ visiblePosts: body });
+  };
   handleQuery = event => {
     let query = event.target.value;
     this.setState({
-      posts: this.props.allPosts.filter(item => {
+      visiblePosts: this.state.posts.filter(item => {
         return item.brand.includes(query) || item.model.includes(query);
       })
     });
   };
   loadAll = () => {
-    this.setState({ posts: this.props.allPosts });
+    this.setState({ filter: "all" });
   };
-  loadHonda = () => {
-    let honda = this.props.allPosts.filter(e => e.brand === "honda");
-    this.setState({ posts: honda });
-  };
-  loadDucati = () => {
-    let ducati = this.props.allPosts.filter(e => e.brand === "ducati");
-    this.setState({ posts: ducati });
-  };
-  loadHarleyDavidson = () => {
-    let harleyDavidson = this.props.allPosts.filter(
-      e => e.brand === "harley-davidson"
-    );
-    this.setState({ posts: harleyDavidson });
-  };
-  loadYamaha = () => {
-    let yamaha = this.props.allPosts.filter(e => e.brand === "yamaha");
-    this.setState({ posts: yamaha });
-  };
-  loadSuzuki = () => {
-    let suzuki = this.props.allPosts.filter(e => e.brand === "suzuki");
-    this.setState({ posts: suzuki });
-  };
-  loadAprilia = () => {
-    let aprilia = this.props.allPosts.filter(e => e.brand === "aprilia");
-    this.setState({ posts: aprilia });
-  };
-  loadBmw = () => {
-    let bmw = this.props.allPosts.filter(e => e.brand === "bmw");
-    this.setState({ posts: bmw });
-  };
-  loadKawasaki = () => {
-    let kawasaki = this.props.allPosts.filter(e => e.brand === "kawasaki");
-    this.setState({ posts: kawasaki });
+  changeFilter = filterName => {
+    this.setState({ filter: filterName });
   };
 
   render() {
+    const filteredResult =
+      this.state.filter === "all"
+        ? this.state.visiblePosts
+        : this.state.visiblePosts.filter(
+            post => post.brand === this.state.filter
+          );
+
     return (
       <Wrapper>
         <div className="button">
-          <button onClick={this.loadAll}> SHOW ALL </button>
-          <button onClick={this.loadHonda}> HONDA </button>
-          <button onClick={this.loadDucati}> DUCATI </button>
-          <button onClick={this.loadYamaha}> YAMAHA </button>
-          <button onClick={this.loadSuzuki}> SUZUKI </button>
-          <button onClick={this.loadAprilia}> APRILIA </button>
-          <button onClick={this.loadBmw}> BMW </button>
-          <button onClick={this.loadKawasaki}> KAWASAKI </button>
-          <button onClick={this.loadHarleyDavidson}>HALRLEY</button>{" "}
+          <button onClick={() => this.changeFilter("all")}> SHOW ALL </button>
+          <button onClick={() => this.changeFilter("honda")}> HONDA </button>
+          <button onClick={() => this.changeFilter("ducati")}> DUCATI </button>
+          <button onClick={() => this.changeFilter("yamaha")}> YAMAHA </button>
+          <button onClick={() => this.changeFilter("suzuki")}> SUZUKI </button>
+          <button onClick={() => this.changeFilter("aprilia")}>
+            {" "}
+            APRILIA{" "}
+          </button>
+          <button onClick={() => this.changeFilter("bmw")}> BMW </button>
+          <button onClick={() => this.changeFilter("kawasaki")}>
+            {" "}
+            KAWASAKI{" "}
+          </button>
+          <button onClick={() => this.changeFilter("harley-davidson")}>
+            HALRLEY
+          </button>
         </div>
         <div>
           <Search>
@@ -96,7 +87,7 @@ class Home extends Component {
             </div>
           </Search>
           <AllItem>
-            {this.state.posts.map(p => (
+            {filteredResult.map(p => (
               <Post key={p._id} contents={p} />
             ))}
           </AllItem>
@@ -106,3 +97,97 @@ class Home extends Component {
   }
 }
 export default Home;
+
+// import React, { Component } from "react";
+// import Post from "./Post.jsx";
+// import styled from "styled-components";
+
+// const Search = styled.div`
+//   text-align: left;
+//   margin-left: 20px;
+//   margin-bottom: 10px;
+// `;
+
+// const AllItem = styled.div`
+//   display: grid;
+//   grid-template-columns: auto auto auto auto;
+//   margin-left: 10px;
+// `;
+// const Wrapper = styled.div`
+//   margin-top: 10;
+//   display: flix;
+// `;
+
+// class Home extends Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = { posts: [], visiblePosts: [], filter: "all" };
+//   }
+//   componentDidMount = async () => {
+//     let response = await fetch("/all-posts");
+//     let body = await response.text();
+//     body = JSON.parse(body);
+//     this.setState({ posts: body });
+//     this.setState({ visiblePosts: body });
+//   };
+//   handleQuery = event => {
+//     let query = event.target.value;
+//     this.setState({
+//       visiblePosts: this.state.posts.filter(item => {
+//         return item.brand.includes(query) || item.model.includes(query);
+//       })
+//     });
+//   };
+//   loadAll = () => {
+//     this.setState({ filter: "all" });
+//   };
+
+//   changeFilter = filterName => {
+//     this.setState({ filter: filterName });
+//   };
+
+//   render() {
+//     const filteredResult =
+//       this.state.filter === "all"
+//         ? this.state.visiblePosts
+//         : this.state.visiblePosts.filter(
+//             post => post.brand === this.state.filter
+//           );
+
+//     return (
+//       <Wrapper>
+//         <div className="button">
+//           <button onClick={this.changeFilter("all")}> SHOW ALL </button>
+//           <button onClick={this.changeFilter("honda")}> HONDA </button>
+//           <button onClick={this.changeFilter("ducati")}> DUCATI </button>
+//           <button onClick={this.changeFilter("yamaha")}> YAMAHA </button>
+//           <button onClick={this.changeFilter("suzuki")}> SUZUKI </button>
+//           <button onClick={this.changeFilter("aprilia")}> APRILIA </button>
+//           <button onClick={this.changeFilter("bmw")}> BMW </button>
+//           <button onClick={this.changeFilter("kawasaki")}> KAWASAKI </button>
+//           <button onClick={this.changeFilter("harley-davidson")}>
+//             HALRLEY
+//           </button>
+//         </div>
+//         <div>
+//           <Search>
+//             <div>
+//               <input
+//                 type="text"
+//                 className="custom-file-input"
+//                 placeholder="Search"
+//                 onChange={this.handleQuery}
+//               ></input>
+//             </div>
+//           </Search>
+//           <AllItem>
+//             {filteredResult.map(p => (
+//               <Post key={p._id} contents={p} />
+//             ))}
+//           </AllItem>
+//         </div>
+//       </Wrapper>
+//     );
+//   }
+// }
+// export default Home;

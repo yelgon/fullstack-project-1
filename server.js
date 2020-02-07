@@ -4,7 +4,6 @@ let multer = require("multer");
 let upload = multer({ dest: __dirname + "/uploads/" });
 let reloadMagic = require("./reload-magic.js");
 let MongoClient = require("mongodb").MongoClient;
-let objectID = require("mongodb").objectID;
 let sha1 = require("sha1");
 reloadMagic(app);
 
